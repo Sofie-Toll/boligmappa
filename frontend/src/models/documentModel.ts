@@ -20,3 +20,10 @@ export interface CreateDocumentRequest {
   documentType: DocumentType;
   uploadedBy: string;
 }
+
+export interface UpdateDocumentRequest {
+  propertyId: string;
+  title: string;
+  documentType: DocumentType;
+  uploadedBy: string;
+}
