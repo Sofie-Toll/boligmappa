@@ -15,6 +15,13 @@ public class DocumentsController : ControllerBase
         _documentService = documentService;
     }
 
+    [HttpGet("properties")]
+    public async Task<IActionResult> GetPropertyIds()
+    {
+        var propertyIds = await _documentService.GetPropertyIdsAsync();
+        return Ok(propertyIds);
+    }
+
     [HttpGet("properties/{propertyId}/documents")]
     public async Task<IActionResult> GetByProperty(Guid propertyId)
     {

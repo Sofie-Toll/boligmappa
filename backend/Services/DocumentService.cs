@@ -6,6 +6,17 @@ public class DocumentService
 {
     private readonly List<Document> _documents = DocumentSeeder.GetDocuments();
 
+    public Task<IEnumerable<Guid>> GetPropertyIdsAsync()
+    {
+        var propertyIds = _documents
+            .Select(d => d.PropertyId)
+            .Distinct()
+            .OrderBy(id => id)
+            .ToList();
+
+        return Task.FromResult<IEnumerable<Guid>>(propertyIds);
+    }
+
     public Task<IEnumerable<Document>> GetDocumentsByPropertyIdAsync(Guid propertyId)
     {
         var result = _documents
