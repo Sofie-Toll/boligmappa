@@ -1,0 +1,17 @@
+Prosjektoppsett -> Bruk PNPM
+
+1. Lag en domene modell
+2. Sett opp Controllere 
+3. Lag en in memory database
+Vurdere arkitektur for backend - layered
+4. Sett opp Frontend 
+5. Bruk ReactQuery
+
+Ta i bruk designsystemet 
+
+Lister alle dokumenter for en eiendom
+Lar deg opprette et nytt dokument via et skjema
+Lar deg redigere et eksisterende dokument
+Lar deg slette et dokument
+
+Todo: Fixe validering, error håndtering, dele opp App.tsx i mindre komponenter, fixe UU design, muligens bruke design systemet.. 
