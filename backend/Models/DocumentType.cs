@@ -1,3 +1,5 @@
+namespace backend.Models;
+
 public enum DocumentType
 {
     BuildingPermit,
