@@ -4,7 +4,7 @@ namespace backend.Services;
 
 public class DocumentService
 {
-    private readonly List<Document> _documents = [];
+    private readonly List<Document> _documents = DocumentSeeder.GetDocuments();
 
     public Task<IEnumerable<Document>> GetDocumentsByPropertyIdAsync(Guid propertyId)
     {
@@ -28,6 +28,21 @@ public class DocumentService
         if (document is null) return Task.FromResult(false);
         _documents.Remove(document);
         return Task.FromResult(true);
+    }
+
+    public Task<Document?> UpdateAsync(Guid documentId, Document updatedDocument)
+    {
+        var existing = _documents.FirstOrDefault(d => d.Id == documentId);
+        if (existing is null)
+        {
+            return Task.FromResult<Document?>(null);
+        }
+
+        existing.Title = updatedDocument.Title;
+        existing.DocumentType = updatedDocument.DocumentType;
+        existing.UploadedBy = updatedDocument.UploadedBy;
+
+        return Task.FromResult<Document?>(existing);
     }
 
     //TODO: add misssing operations
