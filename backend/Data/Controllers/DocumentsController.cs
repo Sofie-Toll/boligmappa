@@ -42,6 +42,19 @@ public class DocumentsController : ControllerBase
         return NoContent();
     }
 
+    [HttpPut("documents/{documentId}")]
+    public async Task<IActionResult> Update(Guid documentId, [FromBody] Document document)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var updated = await _documentService.UpdateAsync(documentId, document);
+        if (updated is null)
+            return NotFound(new { message = "Document not found" });
+
+        return Ok(updated);
+    }
+
     //Todo add missing endpoints
     //Add validation and exception handling
 }
