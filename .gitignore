@@ -4,3 +4,15 @@
 # Track only the candidate-facing task
 !.gitignore
 !INTERVIEW-TASK.md
+!README.md
+!backend/
+!frontend/
+!backend/**
+!frontend/**
+
+# Ignore nested git metadata and build artifacts
+frontend/.git/
+frontend/node_modules/
+frontend/build/
+backend/bin/
+backend/obj/
