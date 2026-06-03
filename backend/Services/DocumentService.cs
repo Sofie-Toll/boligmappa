@@ -6,7 +6,7 @@ public class DocumentService
 {
     private readonly List<Document> _documents = [];
 
-    public Task<IEnumerable<Document>> GetByPropertyIdAsync(Guid propertyId)
+    public Task<IEnumerable<Document>> GetDocumentsByPropertyIdAsync(Guid propertyId)
     {
         var result = _documents
             .Where(d => d.PropertyId == propertyId)
@@ -22,9 +22,9 @@ public class DocumentService
         return Task.FromResult(document);
     }
 
-    public Task<bool> DeleteAsync(Guid id)
+    public Task<bool> DeleteAsync(Guid documentId)
     {
-        var document = _documents.FirstOrDefault(d => d.Id == id);
+        var document = _documents.FirstOrDefault(d => d.Id == documentId);
         if (document is null) return Task.FromResult(false);
         _documents.Remove(document);
         return Task.FromResult(true);
