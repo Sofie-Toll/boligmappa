@@ -1,75 +1,49 @@
-# Fullstack Starter (Backend + Frontend)
+# Boligmappa 
 
-This workspace contains:
+## Teknologi
 
-- `backend`: .NET 8 Web API with Swagger enabled in Development
-- `frontend`: Create React App (TypeScript) managed with pnpm
+- Backend: .NET 8 Web API 
+- Frontend: React + TypeScript + React Query
 
-## Prerequisites
+## Kjør prosjektet
 
-- .NET 8 SDK
-- Node.js 18+
-- pnpm (`npm i -g pnpm` if needed)
-
-## Run Backend
+Terminal 1 (backend):
 
 ```bash
 cd backend
-dotnet run
+dotnet build
+dotnet ./bin/Debug/net8.0/backend.dll
 ```
 
-If you run from Git Bash on Windows and `dotnet run` fails to start the app `.exe`, use:
+Backend kjører på:
 
-```bash
-cd backend
-dotnet ./bin/Debug/net8.0/backend.dll --urls http://localhost:5231
-```
+- http://localhost:5000
+- Swagger: http://localhost:5000/swagger
 
-Backend URLs (from launch settings):
-
-- `http://localhost:5231`
-- `https://localhost:7180`
-
-Swagger UI is available in Development at:
-
-- `http://localhost:5231/swagger`
-- `https://localhost:7180/swagger`
-
-## Run Frontend
+Terminal 2 (frontend):
 
 ```bash
 cd frontend
+pnpm install
 pnpm start
 ```
 
-Frontend runs at:
+Frontend kjører på:
 
-- `http://localhost:3000`
+- http://localhost:3000
 
-## Frontend <-> Backend Connection
+Frontend-proxy peker til backend på port 5000.
 
-The frontend is configured with a CRA dev proxy in `frontend/package.json`:
+## Hva som fungerer
 
-```json
-"proxy": "http://localhost:5231"
-```
+- Liste dokumenter per propertyId
+- Opprette dokument
+- Redigere dokument
+- Slette dokument
+- Velge eksisterende propertyId
+- Generere ny propertyId
 
-The React app calls `/api/health`, which is served by the backend endpoint in `backend/Program.cs`.
+## Kort om data
 
-## Quick Start (Two Terminals)
-
-Terminal 1:
-
-```bash
-cd backend
-dotnet run
-```
-
-Terminal 2:
-
-```bash
-cd frontend
-pnpm start
-```
-
-Open `http://localhost:3000` and verify the API status is shown as `ok`.
+- Backend bruker in-memory data
+- Seed-data lastes ved oppstart
